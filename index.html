@@ -2,53 +2,14 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>FuelPumps</title>
+  <title>Home | FuelPumps</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <link href="css/codiqa.ext.min.css" rel="stylesheet">
-  <link href="css/jquery.mobile-1.3.1.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
 
-  <script src="js/jquery-1.9.1.min.js"></script>
-  <script src="js/jquery.mobile-1.3.1.min.js"></script>
-  <script src="js/codiqa.ext.min.js"></script>
-  <script src="js/fuelpumps.js"></script>
-  
-    
-<script type="text/javascript">
-$(document).ready(function(){
-  $("form").submit(function(){
-   
-	var pump_name = $("#pump_name").val();
-	var filler_no = $("#filler_no").val();
-	var super_unleaded_gal = $("#super_unleaded_gal").val();
-	var reg_unleaded_gal = $("#reg_unleaded_gal").val();
-	// Returns successful data submission message when the entered information is stored in database.
-	var dataString = 'pump_name='+ pump_name + '&filler_no='+ filler_no + '&super_unleaded_gal='+ super_unleaded_gal + '&reg_unleaded_gal='+ reg_unleaded_gal;
-	if(pump_name==''||filler_no==''||super_unleaded_gal==''||reg_unleaded_gal=='')
-	{
-	alert("Please Fill All Fields");
-	}
-	else
-	{
-	// AJAX Code To Submit Form.
-	$.ajax({
-	type: "POST",
-	url: "add_pump_data.php",
-	data: dataString,
-	cache: false,
-	success: function(result){
-	alert(result);
-	}
-	});
-	}
-	return false;
-   
-  });
-});
-</script>
-
+  <script src="js/scripts.js"></script>
 </head>
 <body>
   <div data-role="page" data-control-title="Home" id="page1">
@@ -59,28 +20,28 @@ $(document).ready(function(){
           <div data-role="navbar" data-iconpos="top">
               <ul>
                   <li>
-                      <a href="#page1" data-transition="fade" data-theme="" data-icon="">
+                      <a href="index.html" data-transition="fade" data-theme="" data-icon="">
                           Add Pump
                       </a>
                   </li>
                   <li>
-                      <a href="#page1" data-transition="fade" data-theme="" data-icon="">
+                      <a href="index.html" data-transition="fade" data-theme="" data-icon="">
                           Car Filler Form
                       </a>
                   </li>
               </ul>
           </div>
       </div>
+	  <form>
       <div data-role="content">
           <h2>
               Pump Details
           </h2>
-		  <form action="">
           <div data-role="fieldcontain" data-controltype="selectmenu">
-              <label for="selectmenu1">
+              <label for="pump_id">
                   Pump:
               </label>
-              <select id="pump_name" name="">
+              <select id="pump_id" name="">
                   <option value="1">
                       Pump 1
                   </option>
@@ -93,10 +54,10 @@ $(document).ready(function(){
               </select>
           </div>
           <div data-role="fieldcontain" data-controltype="selectmenu">
-              <label for="selectmenu2">
+              <label for="filler_id">
                   Filler #:
               </label>
-              <select id="filler_no" name="">
+              <select id="filler_id" name="">
                   <option value="1">
                       000123
                   </option>
@@ -121,20 +82,55 @@ $(document).ready(function(){
               </select>
           </div>
           <div data-role="fieldcontain" data-controltype="textinput">
-              <label for="textinput2">
-                  Super Unleaded Gal
+              <label for="super_unleaded_gal">
+                  Super Unleaded Gal:
               </label>
-              <input name="" id="super_unleaded_gal" placeholder="" value="" type="text">
+              <input name="" id="super_unleaded_gal" placeholder="" value="" type="text"/>
           </div>
           <div data-role="fieldcontain" data-controltype="textinput">
-              <label for="textinput3">
-                  Regular Unleaded Gal
+              <label for="reg_unleaded_gal">
+                  Regular Unleaded Gal:
               </label>
-              <input name="" id="reg_unleaded_gal" placeholder="" value="" type="text">
+              <input name="" id="reg_unleaded_gal" placeholder="" value="" type="text"/>
           </div>
-          <input type="submit" value="Submit">
-		  </form>
+          <input type="submit" value="Submit"/>
       </div>
+	  </form>
   </div>
+  
+       
+<script type="text/javascript">
+$(document).ready(function(){
+  $("form").submit(function(){
+   var pump_id = $("#pump_id").val();
+	var filler_id = $("#filler_id").val();
+	var super_unleaded_gal = $("#super_unleaded_gal").val();
+	var reg_unleaded_gal = $("#reg_unleaded_gal").val();
+	// Returns successful data submission message when the entered information is stored in database.
+	var dataString = 'pump_id='+ pump_id + '&filler_id='+ filler_id + '&super_unleaded_gal='+ super_unleaded_gal + '&reg_unleaded_gal='+ reg_unleaded_gal;
+	alert(dataString)
+	if(pump_id==''||filler_id==''||super_unleaded_gal==''||reg_unleaded_gal=='')
+	{
+	alert("Please Fill All Fields");
+	}
+	else
+	{
+	// AJAX Code To Submit Form.
+	$.ajax({
+	type: "POST",
+	url: "http://prologicsoft.net/fuelpumps_webservices/add_pump_data.php",
+	data: dataString,
+	cache: false,
+	success: function(result){
+	alert(result);
+	}
+	});
+	}
+	return false;
+   
+  });
+});
+</script>
+
 </body>
 </html>
