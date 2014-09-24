@@ -19,7 +19,9 @@
           <h3>
               FuelPumps
           </h3>
-         
+         <a id="close_app" data-role="button" href="index.html" class="ui-btn-right">
+              Button
+          </a>
       </div>
       <div data-role="content">
           <h2>
@@ -40,6 +42,10 @@ $(document).ready(function(){
 
 $("#newtran").click(function(){
 $(location).attr('href', 'index.html');
+});
+
+$("#close_app").click(function(){
+	window.close();
 });
   
 });
