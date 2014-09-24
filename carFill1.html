@@ -177,10 +177,10 @@ $(document).ready(function(){
 		data: dataString,
 		cache: false,
 		success: function(result){
-		//alert(result);
+		alert(result);
 		
 		var obj = jQuery.parseJSON(result);
-		//alert(obj.error_code)
+		alert(obj.error_code)
 		if(obj.error_code == "S4200")
 		{
 			
