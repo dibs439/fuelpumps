@@ -216,6 +216,8 @@ $(document).ready(function(){
 	var car_owner_id 	= $("#car_owner_id").val();
 	var mileage 		= $("#mileage").val();
 	var additive 		= $("#additive").val();
+	var start_1 		= $("#start_meter_1_reading").val();
+	var start_2 		= $("#start_meter_2_reading").val();
 	
 	if(car_id == '')
 	{
@@ -261,6 +263,8 @@ $(document).ready(function(){
 		window.localStorage.setItem("cook_car_owner_id", car_owner_id);
 		window.localStorage.setItem("cook_mileage", mileage);
 		window.localStorage.setItem("cook_additive", additive);
+		window.localStorage.setItem("cook_start_meter_1_reading", start_1);
+		window.localStorage.setItem("cook_start_meter_2_reading", start_2);
 		
 		$(location).attr('href', 'carFill2.html');
 	}
