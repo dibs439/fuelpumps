@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Car Fill Form 2 | FuelPumps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link href="css/styles.css" rel="stylesheet">
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/jquery.mobile-1.3.1.min.js"></script>
+  <script src="js/codiqa.ext.min.js"></script>
+  <script src="js/fuelpumps.js"></script>
+  <script src="js/cookie.js"></script>
+  
+    
+  <script type="text/javascript">
+  var pumpArray = [];
+  var fillerArray = [];
+  var carTypeArray = [];
+  var carOwnerArray = [];
+  
+  pumpArray[1] = "Pump 1";
+  pumpArray[2] = "Pump 2";
+  pumpArray[3] = "Pump 3";
+ 
+  fillerArray[1] = "000123";
+  fillerArray[2] = "000124";
+  fillerArray[3] = "000125";
+  fillerArray[4] = "000126";
+  fillerArray[5] = "000127";
+  fillerArray[6] = "000128";
+  fillerArray[7] = "000129";
+  
+  carTypeArray[1] = "Ford";
+  carTypeArray[2] = "Chevy";
+  carTypeArray[3] = "Jeep";
+  carTypeArray[4] = "Subraru";
+  carTypeArray[5] = "Benz";
+  carTypeArray[6] = "UNK - Unknown";
+  
+   carOwnerArray[1] = "Jon Jones";
+   carOwnerArray[2] = "Dave Jones";
+   carOwnerArray[3] = "Brenda Jones";
+   carOwnerArray[4] = "Billy Gram";
+   carOwnerArray[5] = "Tony Bennette";
+   carOwnerArray[6] = "Jimmy Good";
+   carOwnerArray[7] = "Upto Nogood";
+   
+  </script>
+
+  
+</head>
+<body>
+  <div data-role="page" data-control-title="Car Fill Form 2" id="page5">
+      <div data-theme="a" data-role="header">
+          <h3>
+              FuelPumps
+          </h3>
+          
+      </div>
+	  <form>
+      <div data-role="content">
+          <h2>
+              Car Fill Form - Step 3
+          </h2>
+		  <b>Pump: <span id="lab_pump_name"></span> | Filler #: <span id="lab_filler_no"></span></b><br>
+		  <b>Start Meter 1 Reading: <span id="lab_start_1"></span> | Start Meter 2 Reading: <span id="lab_start_2"></span></b><br>
+		  
+          <div data-role="fieldcontain" data-controltype="textarea">
+              <label for="textarea1">
+                  Notes:
+              </label>
+              <textarea name="" id="textarea1" placeholder=""></textarea>
+          </div>
+          <div data-role="fieldcontain" data-controltype="textinput">
+              <label for="end_meter_1_reading">
+                  End Meter 1 Reading:
+              </label>
+              <input name="" id="end_meter_1_reading" placeholder="" value="" type="text"/>
+          </div>
+          <div data-role="fieldcontain" data-controltype="textinput">
+              <label for="end_meter_2_reading">
+                  End Meter 2 Reading:
+              </label>
+              <input name="" id="end_meter_2_reading" placeholder="" value="" type="text"/>
+          </div>
+          <div data-role="fieldcontain" data-controltype="textinput">
+              <label for="total_gallons">
+                  Total Gallons:
+              </label>
+              <input name="" id="total_gallons" placeholder="" value="" type="text" readonly="readonly" />
+          </div>
+          <input type="submit" value="Submit"/>
+      </div>
+	  </form>
+  </div>
+  
+<script type="text/javascript">
+$(document).ready(function(){
+
+  // Run code
+  var pump_id = getCookie("cook_pump_id");
+  var filler_id = getCookie("cook_filler_id");
+  var car_id = getCookie("cook_car_id");
+  var car_type_id = getCookie("cook_car_type_id");
+  var car_owner_id = getCookie("cook_car_owner_id");
+  var mileage = getCookie("cook_mileage");
+  var additive = getCookie("cook_additive");
+  var start_1 = getCookie("cook_start_meter_1_reading");
+  var start_2 = getCookie("cook_start_meter_2_reading");
+  
+  $('#lab_pump_name').html(pumpArray[pump_id]);
+  $('#lab_filler_no').html(fillerArray[filler_id]);
+  $('#lab_start_1').html(start_1);
+  $('#lab_start_2').html(start_2);
+  
+  $('#end_meter_1_reading').val(start_1);
+  $('#end_meter_2_reading').val(start_2);
+ 
+	//alert(start_1)
+	//alert(start_2)
+	var flag1 = true
+	var flag2 = true
+	var total_gallons = 0;
+	
+	$("#total_gallons").focus(function(){
+		
+		total_gallons = gallon_calc();
+		$("#total_gallons").val(total_gallons);
+	  
+	});
+
+  $("form").submit(function(){
+    total_gallons = gallon_calc();
+	$("#total_gallons").val(total_gallons);
+	
+	var end_1 = $("#end_meter_1_reading").val();
+	var end_2 = $("#end_meter_2_reading").val();
+	var notes = $("#textarea1").val();
+	
+	if(pump_id==''||filler_id==''||start_1==''||start_2==''||end_1==''||end_2=='')
+	{
+		alert("Please fill all fields.");
+	}
+	else
+	{
+		setCookie("cook_notes", notes);
+		setCookie("cook_end_meter_1_reading", end_1);
+		setCookie("cook_end_meter_2_reading", end_2);
+		setCookie("cook_total_gallons", total_gallons);
+		
+		$(location).attr('href', 'carFill3.html');
+		
+	}
+
+
+	return false;
+   
+  });
+});
+function gallon_calc()
+{
+	var flag1 = true
+	var flag2 = true
+	var total_gallons = 0;
+	
+	var start_1 = getCookie("cook_start_meter_1_reading");
+	var start_2 = getCookie("cook_start_meter_2_reading");
+  
+	var end_1 = $("#end_meter_1_reading").val();
+	var end_2 = $("#end_meter_2_reading").val();
+  
+	if(end_1 == '' || !$.isNumeric(end_1))
+	{
+		alert('Please enter a numeric value for end meter 1');
+		flag1 = false 
+	}
+	
+	else if(end_2 == '' || !$.isNumeric(end_2))
+	{
+		alert('Please enter a numeric value for end meter 2');
+		flag2 = false
+	}
+	else
+	{
+		/*if(parseInt(end_1) - parseInt(start_1) < 0)
+		{
+			alert('End for for Meter 1 cannot be less than the start value.');
+			$("#end_meter_1_reading").val('0');
+			total_gallons = 0;
+		}
+		
+		if(parseInt(end_2) - parseInt(start_2) < 0)
+		{
+			alert('End for for Meter 2 cannot be less than the start value.');
+			$("#end_meter_2_reading").val('0');
+			total_gallons = 0;
+		}*/
+		
+		
+		total_gallons = parseInt(end_1) - parseInt(start_1) + parseInt(end_2) - parseInt(start_2);
+		
+		/*if(total_gallons < 0)
+		{
+			alert('Negative value for gallons not accepted.');
+			total_gallons = 0;
+		}*/
+		//alert('Total: '+total_gallons);
+		return total_gallons;
+		
+		
+	}
+}
+</script>
+  
+</body>
+</html>
