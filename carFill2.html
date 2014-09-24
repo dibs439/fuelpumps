@@ -102,7 +102,7 @@
 $(document).ready(function(){
 
   // Run code
-  var pump_id = getCookie("cook_pump_id");
+  /*var pump_id = getCookie("cook_pump_id");
   var filler_id = getCookie("cook_filler_id");
   var car_id = getCookie("cook_car_id");
   var car_type_id = getCookie("cook_car_type_id");
@@ -110,7 +110,19 @@ $(document).ready(function(){
   var mileage = getCookie("cook_mileage");
   var additive = getCookie("cook_additive");
   var start_1 = getCookie("cook_start_meter_1_reading");
-  var start_2 = getCookie("cook_start_meter_2_reading");
+  var start_2 = getCookie("cook_start_meter_2_reading");*/
+  
+  var pump_id = window.localStorage.getItem("cook_pump_id");
+  var filler_id = window.localStorage.getItem("cook_filler_id");
+  var car_id = window.localStorage.getItem("cook_car_id");
+  var car_type_id = window.localStorage.getItem("cook_car_type_id");
+  var car_owner_id = window.localStorage.getItem("cook_car_owner_id");
+  var mileage = window.localStorage.getItem("cook_mileage");
+  var additive = window.localStorage.getItem("cook_additive");
+  var start_1 = window.localStorage.getItem("cook_start_meter_1_reading");
+  var start_2 = window.localStorage.getItem("cook_start_meter_2_reading");
+  
+ 
   
   $('#lab_pump_name').html(pumpArray[pump_id]);
   $('#lab_filler_no').html(fillerArray[filler_id]);
@@ -147,11 +159,10 @@ $(document).ready(function(){
 	}
 	else
 	{
-		setCookie("cook_notes", notes);
-		setCookie("cook_end_meter_1_reading", end_1);
-		setCookie("cook_end_meter_2_reading", end_2);
-		setCookie("cook_total_gallons", total_gallons);
-		
+		window.localStorage.setItem("cook_notes", notes);
+		window.localStorage.setItem("cook_end_meter_1_reading", end_1);
+		window.localStorage.setItem("cook_end_meter_2_reading", end_2);
+		window.localStorage.setItem("cook_total_gallons", total_gallons);
 		$(location).attr('href', 'carFill3.html');
 		
 	}
@@ -167,8 +178,12 @@ function gallon_calc()
 	var flag2 = true
 	var total_gallons = 0;
 	
-	var start_1 = getCookie("cook_start_meter_1_reading");
-	var start_2 = getCookie("cook_start_meter_2_reading");
+	/*var start_1 = getCookie("cook_start_meter_1_reading");
+	var start_2 = getCookie("cook_start_meter_2_reading");*/
+	
+	var start_1 = window.localStorage.getItem("cook_start_meter_1_reading");
+	var start_2 = window.localStorage.getItem("cook_start_meter_2_reading");
+  
   
 	var end_1 = $("#end_meter_1_reading").val();
 	var end_2 = $("#end_meter_2_reading").val();

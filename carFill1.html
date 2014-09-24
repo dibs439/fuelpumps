@@ -189,9 +189,10 @@ $(document).ready(function(){
 			
 			$( "#start_meter_1_reading" ).val(obj.super_unleaded_gal);
 			$( "#start_meter_2_reading" ).val(obj.reg_unleaded_gal);
-			
-			setCookie("cook_start_meter_1_reading", obj.super_unleaded_gal);
-			setCookie("cook_start_meter_2_reading", obj.reg_unleaded_gal);
+			window.localStorage.setItem("cook_start_meter_1_reading", obj.super_unleaded_gal);
+			window.localStorage.setItem("cook_start_meter_2_reading", obj.reg_unleaded_gal);
+			//setCookie("cook_start_meter_1_reading", obj.super_unleaded_gal);
+			//setCookie("cook_start_meter_2_reading", obj.reg_unleaded_gal);
 			
 			//document.getElementById('start_meter_1_reading').innerHTML = obj.super_unleaded_gal
 		}
@@ -200,8 +201,11 @@ $(document).ready(function(){
 			$( "#start_meter_1_reading" ).val(0);
 			$( "#start_meter_2_reading" ).val(0);
 			
-			setCookie("cook_start_meter_1_reading", 0);
-			setCookie("cook_start_meter_2_reading", 0);
+			window.localStorage.setItem("cook_start_meter_1_reading", 0);
+			window.localStorage.setItem("cook_start_meter_2_reading", 0);
+			
+			//setCookie("cook_start_meter_1_reading", 0);
+			//setCookie("cook_start_meter_2_reading", 0);
 		}
 	}
 	});
@@ -246,11 +250,18 @@ $(document).ready(function(){
 	}
 	else
 	{
-		setCookie("cook_car_id", car_id);
+		/*setCookie("cook_car_id", car_id);
 		setCookie("cook_car_type_id", car_type_id);
 		setCookie("cook_car_owner_id", car_owner_id);
 		setCookie("cook_mileage", mileage);
-		setCookie("cook_additive", additive);
+		setCookie("cook_additive", additive);*/
+		
+		window.localStorage.setItem("cook_car_id", car_id);
+		window.localStorage.setItem("cook_car_type_id", car_type_id);
+		window.localStorage.setItem("cook_car_owner_id", car_owner_id);
+		window.localStorage.setItem("cook_mileage", mileage);
+		window.localStorage.setItem("cook_additive", additive);
+		
 		$(location).attr('href', 'carFill2.html');
 	}
 	

@@ -67,6 +67,7 @@ $(document).ready(function(){
 
 
   // Run code
+  /*
   var pump_id = getCookie("cook_pump_id");
   var filler_id = getCookie("cook_filler_id");
   var car_id = getCookie("cook_car_id");
@@ -79,7 +80,21 @@ $(document).ready(function(){
   var end_1 = getCookie("cook_end_meter_1_reading");
   var end_2 = getCookie("cook_end_meter_2_reading");
   var notes = getCookie("cook_notes");
-  var total_gallons = getCookie("cook_total_gallons");
+  var total_gallons = getCookie("cook_total_gallons");*/
+  
+  var pump_id = window.localStorage.getItem("cook_pump_id");
+  var filler_id = window.localStorage.getItem("cook_filler_id");
+  var car_id = window.localStorage.getItem("cook_car_id");
+  var car_type_id = window.localStorage.getItem("cook_car_type_id");
+  var car_owner_id = window.localStorage.getItem("cook_car_owner_id");
+  var mileage = window.localStorage.getItem("cook_mileage");
+  var additive = window.localStorage.getItem("cook_additive");
+  var start_1 = window.localStorage.getItem("cook_start_meter_1_reading");
+  var start_2 = window.localStorage.getItem("cook_start_meter_2_reading");
+  var end_1 = window.localStorage.getItem("cook_end_meter_1_reading");
+  var end_2 = window.localStorage.getItem("cook_end_meter_2_reading");
+  var notes = window.localStorage.getItem("cook_notes");
+  var total_gallons = window.localStorage.getItem("cook_total_gallons");
   
   //alert(car_type_id)
   $('#pump_name').html(pumpArray[pump_id]);
