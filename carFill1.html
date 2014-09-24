@@ -160,8 +160,11 @@
 $(document).ready(function(){
 
   // Run code
-  var pump_id = getCookie("cook_pump_id");
-  var filler_id = getCookie("cook_filler_id");
+  //var pump_id = getCookie("cook_pump_id");
+  //var filler_id = getCookie("cook_filler_id");
+  
+  var pump_id = localStorage.getItem("cook_pump_id");
+  var filler_id = localStorage.getItem("cook_filler_id");
 
   /*document.getElementById('lab_pump_name').innerHTML = pumpArray[pump_id];
   document.getElementById('lab_filler_no').innerHTML = fillerArray[filler_id];*/

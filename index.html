@@ -105,9 +105,13 @@ $(document).ready(function(){
 	else
 	{
 		//alert(pump_id+" "+filler_id)
-		setCookie("cook_pump_id", pump_id)
-		setCookie("cook_filler_id", filler_id)
+		//setCookie("cook_pump_id", pump_id)
+		//setCookie("cook_filler_id", filler_id)
 		//window.location.href = "carFill1.html"
+		
+		
+		localStorage.setItem("cook_pump_id", pump_id); 
+		localStorage.setItem("cook_filler_id", filler_id); 
 		
 		var url = "carFill1.html";    
 		$(location).attr('href',url);
