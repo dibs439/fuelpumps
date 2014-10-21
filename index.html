@@ -26,55 +26,55 @@
 	  <form>
       <div data-role="content">
           <h2>
-              Car Filler Form - Step 1
+              Aircraft Filler Form - Step 1
           </h2>
           <div data-role="fieldcontain" data-controltype="selectmenu">
-              <label for="pump_id">
-                  Pump:
+              <label for="truck">
+                  Truck:
               </label><br />
-              <select id="pump_id" name="">
+              <select id="truck" name="">
 				  <option value="">
                       Select
                   </option>
 				  
-                  <option value="1">
-                      Pump 1
+                  <option value="Truck 1">
+                      Truck 1
                   </option>
-                  <option value="2">
-                      Pump 2
+                  <option value="Truck 2">
+                      Truck 2
                   </option>
-                  <option value="3">
-                      Pump 3
+                  <option value="Truck 3">
+                      Truck 3
                   </option>
               </select>
           </div>
           <div data-role="fieldcontain" data-controltype="selectmenu">
-              <label for="filler_id">
-                  Filler #:
+              <label for="employee_no">
+                  Employee #:
               </label><br />
-              <select id="filler_id" name="">
+              <select id="employee_no" name="">
 				  <option value="">
                       Select
                   </option>
-                  <option value="1">
+                  <option value="000123">
                       000123
                   </option>
-                  <option value="2">
+                  <option value="000124">
                       000124
                   </option>
-                  <option value="3">
+                  <option value="000125">
                       000125
                   </option>
-                  <option value="4">
+                  <option value="000126">
                       000126
                   </option>
-                  <option value="5">
+                  <option value="000127">
                       000127
                   </option>
-                  <option value="6">
+                  <option value="000128">
                       000128
                   </option>
-                  <option value="7">
+                  <option value="000129">
                       000129
                   </option>
               </select>
@@ -93,24 +93,24 @@ $(document).ready(function(){
 
   $("form").submit(function(){
 	
-	var pump_id = $("#pump_id").val();
-	var filler_id = $("#filler_id").val();
+	var truck = $("#truck").val();
+	var employee_no = $("#employee_no").val();
 	
-	//alert(pump_id+' '+filler_id)
+	//alert(truck+' '+employee_no)
 	
-	if(pump_id=='' || filler_id=='')
+	if(truck == '' || employee_no == '')
 	{
 		alert("Please select both options.");
 	}
 	else
 	{
-		//alert(pump_id+" "+filler_id)
-		//setCookie("cook_pump_id", pump_id)
-		//setCookie("cook_filler_id", filler_id)
+		//alert(truck+" "+employee_no)
+		//setCookie("cook_truck", truck)
+		//setCookie("cook_employee_no", employee_no)
 		//window.location.href = "carFill1.html"
 		
-		window.localStorage.setItem("cook_pump_id", pump_id);
-		window.localStorage.setItem("cook_filler_id", filler_id);
+		window.localStorage.setItem("cook_truck", truck);
+		window.localStorage.setItem("cook_employee_no", employee_no);
 		
 		var url = "carFill1.html";    
 		$(location).attr('href',url);

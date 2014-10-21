@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Car Fill Form 2 | FuelPumps</title>
+  <title>Aircraft Fill Form 2 | FuelPumps</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -21,7 +21,7 @@
   
 </head>
 <body>
-  <div data-role="page" data-control-title="Car Fill Form 2" id="page5">
+  <div data-role="page" data-control-title="Aircraft Fill Form 2" id="page5">
       <div data-theme="a" data-role="header">
           <h3>
               FuelPumps
@@ -31,17 +31,17 @@
 	  <form>
       <div data-role="content">
           <h2>
-              Car Fill Form - Step 3
+              Aircraft Fill Form - Step 3
           </h2>
 		  
 		  <p>Please review your information below:</p>
-		  <table cellpadding="2" cellspacing="1" width="100%">
-		  <tr><td>Pump</td><td><label id="pump_name" name=""></label></td></tr>
-		  <tr><td>Filler #</td><td><label id="filler_no" name=""></label></td></tr>
-		  <tr><td>Car Id</td><td><label id="car_id" name=""></label></td></tr>
-		  <tr><td>Car Type</td><td><label id="car_type" name=""></label></td></tr>
-		  <tr><td>Car Owner</td><td><label id="car_owner" name=""></label></td></tr>
-		  <tr><td>Mileage</td><td><label id="mileage" name=""></label></td></tr>
+		  <table cellpadding="2" cellspacing="1" width="90%">
+		  <tr><td width="20%">Truck</td><td><label id="pump_name" name=""></label></td></tr>
+		  <tr><td>Employee No</td><td><label id="filler_no" name=""></label></td></tr>
+		  <tr><td>Tail Id</td><td><label id="tail_id" name=""></label></td></tr>
+		  <tr><td>AC Type</td><td><label id="car_type" name=""></label></td></tr>
+		  <tr><td>Customer Name</td><td><label id="car_owner" name=""></label></td></tr>
+		  <tr><td>AC Hours</td><td><label id="ac_hours" name=""></label></td></tr>
 		  <tr><td>Additive</td><td><label id="additive" name=""></label></td></tr>
 		  <tr><td>Start Meter 1 Reading</td><td><label id="start_1_reading" name=""></label></td></tr>
 		  <tr><td>Start Meter 2 Reading</td><td><label id="start_2_reading" name=""></label></td></tr>
@@ -70,10 +70,10 @@ $(document).ready(function(){
   /*
   var pump_id = getCookie("cook_pump_id");
   var filler_id = getCookie("cook_filler_id");
-  var car_id = getCookie("cook_car_id");
-  var car_type_id = getCookie("cook_car_type_id");
-  var car_owner_id = getCookie("cook_car_owner_id");
-  var mileage = getCookie("cook_mileage");
+  var tail_id = getCookie("cook_tail_id");
+  var ac_type = getCookie("cook_ac_type");
+  var customer_name = getCookie("cook_customer_name");
+  var ac_hours = getCookie("cook_ac_hours");
   var additive = getCookie("cook_additive");
   var start_1 = getCookie("cook_start_meter_1_reading");
   var start_2 = getCookie("cook_start_meter_2_reading");
@@ -82,12 +82,16 @@ $(document).ready(function(){
   var notes = getCookie("cook_notes");
   var total_gallons = getCookie("cook_total_gallons");*/
   
-  var pump_id = window.localStorage.getItem("cook_pump_id");
-  var filler_id = window.localStorage.getItem("cook_filler_id");
-  var car_id = window.localStorage.getItem("cook_car_id");
-  var car_type_id = window.localStorage.getItem("cook_car_type_id");
-  var car_owner_id = window.localStorage.getItem("cook_car_owner_id");
-  var mileage = window.localStorage.getItem("cook_mileage");
+  /*var pump_id = window.localStorage.getItem("cook_pump_id");
+  var filler_id = window.localStorage.getItem("cook_filler_id");*/
+  
+  var truck = window.localStorage.getItem("cook_truck");
+  var employee_no = window.localStorage.getItem("cook_employee_no");
+  
+  var tail_id = window.localStorage.getItem("cook_tail_id");
+  var ac_type = window.localStorage.getItem("cook_ac_type");
+  var customer_name = window.localStorage.getItem("cook_customer_name");
+  var ac_hours = window.localStorage.getItem("cook_ac_hours");
   var additive = window.localStorage.getItem("cook_additive");
   var start_1 = window.localStorage.getItem("cook_start_meter_1_reading");
   var start_2 = window.localStorage.getItem("cook_start_meter_2_reading");
@@ -96,14 +100,16 @@ $(document).ready(function(){
   var notes = window.localStorage.getItem("cook_notes");
   var total_gallons = window.localStorage.getItem("cook_total_gallons");
   
-  //alert(car_type_id)
-  $('#pump_name').html(pumpArray[pump_id]);
-  $('#filler_no').html(fillerArray[filler_id]);
-  $('#car_id').html(car_id);
-  $('#car_type').html(carTypeArray[car_type_id]);
-  $('#car_owner').html(carOwnerArray[car_owner_id]);
-  $('#mileage').html(mileage);
-  $('#additive').html(additiveArray[pump_id]);
+  //alert(ac_hours)
+  
+  //alert(ac_type)
+  $('#pump_name').html(truck);
+  $('#filler_no').html(employee_no);
+  $('#tail_id').html(tail_id);
+  $('#car_type').html(ac_type);
+  $('#car_owner').html(customer_name);
+  $('#ac_hours').html(ac_hours);
+  $('#additive').html(additive);
   $('#start_1_reading').html(start_1);
   $('#start_2_reading').html(start_2);
   $('#end_1_reading').html(end_1);
@@ -116,9 +122,9 @@ $(document).ready(function(){
     
 	
 	// Returns successful data submission message when the entered information is stored in database.
-	var dataString = 'pump_id='+ pump_id + '&filler_id='+ filler_id + '&car_id='+ car_id + '&car_type_id='+ car_type_id + '&car_owner_id='+ car_owner_id + '&mileage='+ mileage + '&additive='+ additive + '&start_1='+ start_1 + '&start_2='+ start_2 + '&end_1='+ end_1 + '&end_2='+ end_2 + '&total_gallons='+ total_gallons + '&notes='+ notes;
-	//alert(dataString)
-	if(pump_id==''||filler_id==''||start_1==''||start_2==''||end_1==''||end_2=='')
+	var dataString = 'truck='+ truck + '&employee_no='+ employee_no + '&tail_id='+ tail_id + '&ac_type='+ ac_type + '&customer_name='+ customer_name + '&ac_hours='+ ac_hours + '&additive='+ additive + '&start_1='+ start_1 + '&start_2='+ start_2 + '&end_1='+ end_1 + '&end_2='+ end_2 + '&total_gallons='+ total_gallons + '&notes='+ notes;
+	alert(dataString)
+	if(truck==''||employee_no==''||start_1==''||start_2==''||end_1==''||end_2=='')
 	{
 		alert("Please fill all fields.");
 	}
@@ -127,10 +133,11 @@ $(document).ready(function(){
 		// AJAX Code To Submit Form.
 		$.ajax({
 		type: "POST",
-		url: "http://fuelpumps.prologicsoft.net/webservices/add_refill_data.php",
+		url: "../concierge_service/webservices/add_refill_data.php",
 		data: dataString,
 		cache: false,
 		success: function(result){
+		//alert(result)
 		if(result == "S4100")
 		{
 			$(location).attr('href', 'thanks.html');

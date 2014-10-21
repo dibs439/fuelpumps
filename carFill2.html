@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Car Fill Form 2 | FuelPumps</title>
+  <title>Aircraft Fill Form 2 | FuelPumps</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -15,46 +15,13 @@
   <script src="js/fuelpumps.js"></script>
   <script src="js/cookie.js"></script>
   
-    
-  <script type="text/javascript">
-  var pumpArray = [];
-  var fillerArray = [];
-  var carTypeArray = [];
-  var carOwnerArray = [];
+  <style>
+  </style>
   
-  pumpArray[1] = "Pump 1";
-  pumpArray[2] = "Pump 2";
-  pumpArray[3] = "Pump 3";
  
-  fillerArray[1] = "000123";
-  fillerArray[2] = "000124";
-  fillerArray[3] = "000125";
-  fillerArray[4] = "000126";
-  fillerArray[5] = "000127";
-  fillerArray[6] = "000128";
-  fillerArray[7] = "000129";
-  
-  carTypeArray[1] = "Ford";
-  carTypeArray[2] = "Chevy";
-  carTypeArray[3] = "Jeep";
-  carTypeArray[4] = "Subraru";
-  carTypeArray[5] = "Benz";
-  carTypeArray[6] = "UNK - Unknown";
-  
-   carOwnerArray[1] = "Jon Jones";
-   carOwnerArray[2] = "Dave Jones";
-   carOwnerArray[3] = "Brenda Jones";
-   carOwnerArray[4] = "Billy Gram";
-   carOwnerArray[5] = "Tony Bennette";
-   carOwnerArray[6] = "Jimmy Good";
-   carOwnerArray[7] = "Upto Nogood";
-   
-  </script>
-
-  
 </head>
 <body>
-  <div data-role="page" data-control-title="Car Fill Form 2" id="page5">
+  <div data-role="page" data-control-title="Aircraft Fill Form 2" id="page5">
       <div data-theme="a" data-role="header">
           <h3>
               FuelPumps
@@ -64,9 +31,10 @@
 	  <form>
       <div data-role="content">
           <h2>
-              Car Fill Form - Step 3
+              Aircraft Fill Form - Step 3
           </h2>
-		  <b>Pump: <span id="lab_pump_name"></span> | Filler #: <span id="lab_filler_no"></span></b><br>
+		  
+		  <b>Truck: <span id="lab_pump_name"></span> | Employee #: <span id="lab_filler_no"></span></b><br>
 		  <b>Start Meter 1 Reading: <span id="lab_start_1"></span> | Start Meter 2 Reading: <span id="lab_start_2"></span></b><br>
 		  
           <div data-role="fieldcontain" data-controltype="textarea">
@@ -104,19 +72,29 @@ $(document).ready(function(){
   // Run code
   /*var pump_id = getCookie("cook_pump_id");
   var filler_id = getCookie("cook_filler_id");
-  var car_id = getCookie("cook_car_id");
-  var car_type_id = getCookie("cook_car_type_id");
-  var car_owner_id = getCookie("cook_car_owner_id");
+  var tail_id = getCookie("cook_tail_id");
+  var ac_type_id = getCookie("cook_ac_type_id");
+  var customer_name = getCookie("cook_customer_name");
   var mileage = getCookie("cook_mileage");
   var additive = getCookie("cook_additive");
   var start_1 = getCookie("cook_start_meter_1_reading");
   var start_2 = getCookie("cook_start_meter_2_reading");*/
   
-  var pump_id = window.localStorage.getItem("cook_pump_id");
-  var filler_id = window.localStorage.getItem("cook_filler_id");
-  var car_id = window.localStorage.getItem("cook_car_id");
-  var car_type_id = window.localStorage.getItem("cook_car_type_id");
-  var car_owner_id = window.localStorage.getItem("cook_car_owner_id");
+  
+  // Run code
+  //var truck = getCookie("cook_truck");
+  //var employee_no = getCookie("cook_employee_no");
+
+  /*document.getElementById('lab_pump_name').innerHTML = pumpArray[truck];
+  document.getElementById('lab_filler_no').innerHTML = fillerArray[employee_no];*/
+  
+  
+  
+  var truck = window.localStorage.getItem("cook_truck");
+  var employee_no = window.localStorage.getItem("cook_employee_no");
+  var tail_id = window.localStorage.getItem("cook_tail_id");
+  var ac_type = window.localStorage.getItem("cook_ac_type");
+  var customer_name = window.localStorage.getItem("cook_customer_name");
   var mileage = window.localStorage.getItem("cook_mileage");
   var additive = window.localStorage.getItem("cook_additive");
   var start_1 = window.localStorage.getItem("cook_start_meter_1_reading");
@@ -124,8 +102,8 @@ $(document).ready(function(){
   
  
   
-  $('#lab_pump_name').html(pumpArray[pump_id]);
-  $('#lab_filler_no').html(fillerArray[filler_id]);
+  $('#lab_pump_name').html(truck);
+  $('#lab_filler_no').html(employee_no);
   $('#lab_start_1').html(start_1);
   $('#lab_start_2').html(start_2);
   
@@ -153,7 +131,7 @@ $(document).ready(function(){
 	var end_2 = $("#end_meter_2_reading").val();
 	var notes = $("#textarea1").val();
 	
-	if(pump_id==''||filler_id==''||start_1==''||start_2==''||end_1==''||end_2=='')
+	if(truck==''||employee_no==''||start_1==''||start_2==''||end_1==''||end_2=='')
 	{
 		alert("Please fill all fields.");
 	}

@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Car Fill Form | FuelPumps</title>
+  <title>Aircraft Fill Form | FuelPumps</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -15,28 +15,11 @@
   <script src="js/fuelpumps.js"></script>  
   <script src="js/cookie.js"></script>
   
-  <script type="text/javascript">
-  var pumpArray = [];
-  var fillerArray = []	;
-  pumpArray[1] = "Pump 1";
-  pumpArray[2] = "Pump 2";
-  pumpArray[3] = "Pump 3";
- 
-  fillerArray[1] = "000123";
-  fillerArray[2] = "000124";
-  fillerArray[3] = "000125";
-  fillerArray[4] = "000126";
-  fillerArray[5] = "000127";
-  fillerArray[6] = "000128";
-  fillerArray[7] = "000129";
-
-  </script>
-  
   
   
 </head>
 <body>
-  <div data-role="page" data-control-title="Car Fill Form" id="page4">
+  <div data-role="page" data-control-title="Aircraft Fill Form" id="page4">
       <div data-theme="a" data-role="header">
           <h3>
               FuelPumps App
@@ -46,95 +29,92 @@
 	  <form>
       <div data-role="content">
           <h2>
-              Car Fill Form - Step 2 
+              Aircraft Fill Form - Step 2 
           </h2>
 		  
 		 
-          <b>Pump: <span id="lab_pump_name"></span> | Filler #: <span id="lab_filler_no"></span></b>
+          <b>Truck: <span id="lab_pump_name"></span> | Employee #: <span id="lab_filler_no"></span></b>
           
-		  
-		 
-		  
-          <div data-role="fieldcontain" data-controltype="textinput">
-              <label for="car_id">
-                  Car Id:
+         <div data-role="fieldcontain" data-controltype="textinput">
+              <label for="tail_id">
+                  Tail Number:
               </label>
-              <input name="" id="car_id" placeholder="" value="" type="text"/>
+              <input name="" id="tail_id" placeholder="" value="" type="text"/>
           </div>
           <div data-role="fieldcontain" data-controltype="selectmenu">
-              <label for="car_type_id">
-                  Car Type:
+              <label for="ac_type">
+                  AC Type:
               </label>
-              <select id="car_type_id" name="">
+              <select id="ac_type" name="">
 				  <option value="">
                       Select
                   </option>
-                  <option value="1">
+                  <option value="Ford">
                       Ford
                   </option>
-                  <option value="2">
+                  <option value="Chevy">
                       Chevy
                   </option>
-                  <option value="3">
+                  <option value="Jeep">
                       Jeep
                   </option>
-                  <option value="4">
+                  <option value="Subraru">
                       Subraru
                   </option>
-                  <option value="5">
+                  <option value="Benz">
                       Benz
                   </option>
-                  <option value="6">
+                  <option value="UNK - Unknown">
                       UNK - Unknown
                   </option>
               </select>
           </div>
           <div data-role="fieldcontain" data-controltype="selectmenu">
-              <label for="car_owner_id">
-                  Car Owner:
+              <label for="customer_name">
+                  Customer Name:
               </label>
-              <select id="car_owner_id" name="">
+              <select id="customer_name" name="">
 				  <option value="">
                       Select
                   </option>
-                  <option value="1">
+                  <option value="Jon Jones">
                       Jon Jones
                   </option>
-                  <option value="2">
+                  <option value="Dave Jones">
                       Dave Jones
                   </option>
-                  <option value="3">
+                  <option value="Brenda Jones">
                       Brenda Jones
                   </option>
-                  <option value="4">
+                  <option value="Billy Gram">
                       Billy Gram
                   </option>
-                  <option value="5">
+                  <option value="Tony Bennette">
                       Tony Bennette
                   </option>
-                  <option value="6">
+                  <option value="Jimmy Good">
                       Jimmy Good
                   </option>
-                  <option value="7">
+                  <option value="Upto Nogood">
                       Upto Nogood
                   </option>
               </select>
           </div>
           <div data-role="fieldcontain" data-controltype="textinput">
-              <label for="mileage">
-                  Mileage:
+              <label for="ac_hours">
+                  AC Hours:
               </label>
-              <input name="" id="mileage" placeholder="" value="" type="text"/>
+              <input name="" id="ac_hours" placeholder="" value="" type="text"/>
           </div>
           <div data-role="fieldcontain" data-controltype="selectmenu">
               <label for="additive">
                   Additive:
               </label>
               <select id="additive" name="">
-                  <option value="1">
+                  <option value="Ethanol">
                       Ethanol
                   </option>
-                  <option value="2">
+                  <option value="Type A Lubricant">
                       Type A Lubricant
                   </option>
               </select>
@@ -159,19 +139,19 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	var pump_id = window.localStorage.getItem("cook_pump_id");
-	var filler_id = window.localStorage.getItem("cook_filler_id");
+	var truck = window.localStorage.getItem("cook_truck");
+	var employee_no = window.localStorage.getItem("cook_employee_no");
   // Run code
-  //var pump_id = getCookie("cook_pump_id");
-  //var filler_id = getCookie("cook_filler_id");
+  //var truck = getCookie("cook_truck");
+  //var employee_no = getCookie("cook_employee_no");
 
-  /*document.getElementById('lab_pump_name').innerHTML = pumpArray[pump_id];
-  document.getElementById('lab_filler_no').innerHTML = fillerArray[filler_id];*/
+  /*document.getElementById('lab_pump_name').innerHTML = pumpArray[truck];
+  document.getElementById('lab_filler_no').innerHTML = fillerArray[employee_no];*/
   
-  $('#lab_pump_name').html(pumpArray[pump_id]);
-  $('#lab_filler_no').html(fillerArray[filler_id]);
+  $('#lab_pump_name').html(truck);
+  $('#lab_filler_no').html(employee_no);
   
-  var dataString = 'pump_id='+ pump_id
+  var dataString = 'truck='+ truck
   // AJAX Code To Submit Form.
 	$.ajax({
 		type: "POST",
@@ -211,57 +191,60 @@ $(document).ready(function(){
 	});
 
   $("form").submit(function(){
-    var car_id 			= $("#car_id").val();
-	var car_type_id 	= $("#car_type_id").val();
-	var car_owner_id 	= $("#car_owner_id").val();
-	var mileage 		= $("#mileage").val();
-	var additive 		= $("#additive").val();
-	var start_1 		= $("#start_meter_1_reading").val();
-	var start_2 		= $("#start_meter_2_reading").val();
+    var tail_id 			= $("#tail_id").val();
+	var ac_type 			= $("#ac_type").val();
+	var customer_name 		= $("#customer_name").val();
+	var ac_hours 			= $("#ac_hours").val();
+	var additive 			= $("#additive").val();
+	var start_1 			= $("#start_meter_1_reading").val();
+	var start_2 			= $("#start_meter_2_reading").val();
 	
-	if(car_id == '')
+	if(tail_id == '')
 	{
-		alert("Please enter car id.");
+		alert("Please enter Tail Id.");
 		return false;
 	}	
-	else if(car_type_id == '')
+	else if(ac_type == '')
 	{
-		alert("Please select car type.");
+		alert("Please select AC Type.");
 		return false;
 	}
 	
-	else if(car_owner_id == '')
+	else if(customer_name == '')
 	{
-		alert("Please select car owner.");
+		alert("Please select Customer Name.");
 		return false;
 	}
-	else if(mileage == '')
+	else if(ac_hours == '')
 	{
-		alert("Please enter mileage.");
+		alert("Please enter AC Hours.");
 		return false;
 	}
-	else if(pump_id == '')
+	else if(truck == '')
 	{
-		alert("You have not selected pump id from previous page.");
+		alert("You have not selected truck from previous page.");
 		return false;
 	}
-	else if(filler_id == '')
+	else if(employee_no == '')
 	{
-		alert("You have not selected filler number from previous page.");
+		alert("You have not selected employee number from previous page.");
 		return false;
 	}
 	else
 	{
-		/*setCookie("cook_car_id", car_id);
-		setCookie("cook_car_type_id", car_type_id);
-		setCookie("cook_car_owner_id", car_owner_id);
-		setCookie("cook_mileage", mileage);
+		/*setCookie("cook_tail_id", tail_id);
+		setCookie("cook_ac_type", ac_type);
+		setCookie("cook_customer_name", customer_name);
+		setCookie("cook_ac_hours", ac_hours);
 		setCookie("cook_additive", additive);*/
 		
-		window.localStorage.setItem("cook_car_id", car_id);
-		window.localStorage.setItem("cook_car_type_id", car_type_id);
-		window.localStorage.setItem("cook_car_owner_id", car_owner_id);
-		window.localStorage.setItem("cook_mileage", mileage);
+		
+		//alert(ac_hours)
+		
+		window.localStorage.setItem("cook_tail_id", tail_id);
+		window.localStorage.setItem("cook_ac_type", ac_type);
+		window.localStorage.setItem("cook_customer_name", customer_name);
+		window.localStorage.setItem("cook_ac_hours", ac_hours);
 		window.localStorage.setItem("cook_additive", additive);
 		window.localStorage.setItem("cook_start_meter_1_reading", start_1);
 		window.localStorage.setItem("cook_start_meter_2_reading", start_2);

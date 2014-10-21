@@ -36,7 +36,7 @@ if(isset($_POST)) {
 	
 	$ret["error_code"] = "S41000"; // Initialize
 	
-	if(!isset($_POST["truck"]) || $_POST["truck"] == "")
+	if(!isset($_POST["pump_id"]) || $_POST["pump_id"] == "")
 	{
 		$ret["error_code"] = "S41001"; // Pump id not found	
 	}
